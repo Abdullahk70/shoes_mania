@@ -1,5 +1,8 @@
-const Form=()=>{
-return  <form className="row g-3">
+import React from 'react'
+
+export default function UpdateForm() {
+  return (
+    <form className="row g-3">
 <div className="col-md-6">
   <label for="inputName" className="form-label">Product Name</label>
   <input type="text" className="form-control" id="productname" placeholder="i.e This is product name"/>
@@ -9,7 +12,7 @@ return  <form className="row g-3">
   <input  className="form-control" id="productid" placeholder="i.e This is product ID" />
 </div>
 <div className="col-12">
-  <label for="inputDescription" className="form-label">Product Description</label>
+  <label for="inputDescription" className="form-label ">Product Description</label>
   <input type="text" className="form-control" id="inputAddress" placeholder="i.e This is product description" />
 </div>
 <div className="col-12">
@@ -44,8 +47,8 @@ return  <form className="row g-3">
 </div>
 
 <div className="col-12">
-  <button type="submit" className="btn btn-primary "style={{backgroundColor:"green"}}>Create</button>
+  <button type="submit" className="btn btn-primary "style={{backgroundColor:"#4C2E9F"}}>Update</button>
 </div>
 </form>
+  )
 }
-export default Form;
