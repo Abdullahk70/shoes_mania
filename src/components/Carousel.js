@@ -11,7 +11,7 @@ const Carousel = () => {
       <div className="carousel-inner " style={{marginTop:5}}>
         <div className="carousel-item active">
           <img
-            style={{ height: 590,width:"200" }}
+            style={{ height: "38rem" }}
             src="https://www.hdwallpapers.in/download/blue_nike_shoe_with_water_splash_in_white_background_hd_nike-1280x720.jpg"
             className="d-block w-100"
             alt="..."
@@ -23,8 +23,8 @@ const Carousel = () => {
         </div>
         <div className="carousel-item" >
           <img
-          style={{ height: 600,width:"200" }}
-            src="https://media.cnn.com/api/v1/images/stellar/prod/nike-infinityrn-4-product-card-cnnu.jpg?c=16x9&q=h_720,w_1280,c_fill"
+          style={{ height: "38rem"}}
+            src="https://cdn.media.amplience.net/i/hibbett/aj-4-seafoam-blog-featured"
             className="d-block w-100"
             alt="..."
           />
@@ -35,9 +35,9 @@ const Carousel = () => {
         </div>
         <div className="carousel-item">
           <img
-          style={{ height: 600,width:"200" }}
-            src="https://media.wired.co.uk/photos/63727049ab57b5ecdfc2fb42/16:9/w_1280,c_limit/Nike-Swoosh-News-Gear.jpg"
-            className="d-block w-100"
+          style={{height: "38rem"}}
+            src="https://images.pexels.com/photos/1456733/pexels-photo-1456733.jpeg?cs=srgb&dl=pexels-ray-piedra-1456733.jpg&fm=jpg"
+            className="d-block w-100 "
             alt="..."
           />
           <div class="carousel-caption d-none d-md-block">

@@ -19,7 +19,7 @@ const Footer=()=> {
           <a href='' className='me-4 text-reset'>
             <MDBIcon fab icon="google" />
           </a>
-          <a href='' className='me-4 text-reset'>
+          <a href='' className='me-3 text-reset'>
             <MDBIcon fab icon="instagram" />
           </a>
           <a href='' className='me-4 text-reset'>
