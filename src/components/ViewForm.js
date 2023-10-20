@@ -18,7 +18,7 @@ export default function ViewForm() {
             id:prevValue,
           }
         }
-        if(nme=="id"){
+        else if(nme=="id"){
           return{
             name:prevValue,
             id:event.target.value,
