@@ -9,9 +9,9 @@ const Navbar = () => {
         style={{ backgroundColor: "#4C2E9F", textShadow: 50, marginTop: "-10px" }}
       >
         <img
-          className="rounded"
+          className="rounded-3"
           src={logo}
-          style={{ height: 45 }}
+          style={{ height: 50 }}
           alt="React Image"
         />
         <a

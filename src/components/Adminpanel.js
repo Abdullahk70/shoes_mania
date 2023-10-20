@@ -4,10 +4,13 @@ import Form from "./Form";
 import ViewForm from "./ViewForm";
 import DeleteForm from "./DeleteForm";
 import UpdateForm from "./UpdateForm";
+import { typeContext } from "../App";
+import { useContext } from "react";
+
+
+
 const Adminpanel=(props)=>{
-  if(props.type=="view"){
-    
-  }
+  const type=useContext(typeContext);
     return (
       
         <>
@@ -23,11 +26,15 @@ const Adminpanel=(props)=>{
             </div>
             <div
               className="col-md-9"
-            >
-              {props.type=="create" && <Form/>}
+            >{type=="create"&& <Form/>}
+             {type=="view"&& <ViewForm/>}
+             {type=="update"&& <UpdateForm/>}
+             {type=="delete"&& <DeleteForm/>}
+             
+              {/* {props.type=="create" && <Form/>}
               {props.type=="view" && <ViewForm/>}
               {props.type=="update" && <UpdateForm/>}
-              {props.type=="delete" && <DeleteForm/>}
+              {props.type=="delete" && <DeleteForm/>} */}
             </div>
           </div>
         </div>

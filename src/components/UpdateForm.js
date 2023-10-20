@@ -47,7 +47,7 @@ export default function UpdateForm() {
 </div>
 
 <div className="col-12">
-  <button type="submit" className="btn btn-primary "style={{backgroundColor:"#4C2E9F"}}>Update</button>
+  <button type="submit" className="btn btn-primary bg-warning">Update</button>
 </div>
 </form>
   )
