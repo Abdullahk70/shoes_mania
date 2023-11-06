@@ -8,10 +8,10 @@ const Sportsshoes=()=>{
         { title:"Calza Comfy 2",pic:"https://www.calza.com.pk/cdn/shop/products/1_845c5590-874e-4fd0-b64e-60f4ad5fdfba.jpg?v=1666171330",price:"PKR 7899.00"},
     ]);
 
-    useEffect(() => {
-      updateData();
-      return () => { console.log("clearing/flushing")}
-    }, [sportsshoes]);
+    // useEffect(() => {
+    //   updateData();
+    //   return () => { console.log("clearing/flushing")}
+    // }, [sportsshoes]);
 
 
   const updateData=()=>{
@@ -22,7 +22,7 @@ const Sportsshoes=()=>{
     {
    sportsshoes.map((itm)=><div className="col-md-3">
       <Card  title={itm.title} pic={itm.pic}  description={itm.price}/>
-
+      
    </div>)
     }
   

@@ -12,11 +12,10 @@ const Casualshoes=()=>{
     ]);
 
 
-    useEffect(() => {
-      updateData();
-      return () => { console.log("clearing/flushing")}
-    }, [casualshoes]);
-
+    // useEffect(() => {
+    //   updateData();
+    //   return () => { console.log("clearing/flushing")}
+    // }, [casualshoes]);
 
   const updateData=()=>{
     alert("data is changed in db and being updated");
@@ -28,6 +27,7 @@ const Casualshoes=()=>{
 
    casualshoes.map((itm)=><div className="col-md-3">
       <Card  title={itm.title} pic={itm.pic}  description={itm.price}/>
+      
    </div>)
     }
   

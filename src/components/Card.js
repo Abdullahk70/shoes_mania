@@ -5,6 +5,7 @@ const Card=(props)=>{
       <h5 className="card-title">{props.title}</h5>
       <p className="card-text">{props.description}</p>
       <button className="btn btn-primary" style={{ backgroundColor: "#4C2E9F" }}>Buy Now</button>
+      <button className="btn btn-success" style={{marginLeft:"10px"}}>Add to Cart</button>
     </div>
   </div>
 }

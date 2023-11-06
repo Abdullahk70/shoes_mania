@@ -9,12 +9,12 @@ import { useContext } from "react";
 
 
 
-const Adminpanel=(props)=>{
+const Adminpanel=()=>{
   const type=useContext(typeContext);
     return (
       
         <>
-        <Navbar/>
+        
         <div className="container-fluid"style={{marginTop:"150px"}}>
             
           <div className="row" >

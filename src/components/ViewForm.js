@@ -15,12 +15,12 @@ export default function ViewForm() {
         if(nme=="Name"){
           return{
             name:event.target.value,
-            id:prevValue,
+            id:prevValue.id,
           }
         }
         else if(nme=="id"){
           return{
-            name:prevValue,
+            name:prevValue.name,
             id:event.target.value,
           }
         }

@@ -7,6 +7,7 @@ const Carousel = () => {
       className="carousel slide container-fluid "
       data-bs-ride="true"
       
+      
     >
       <div className="carousel-inner " style={{marginTop:5}}>
         <div className="carousel-item active">

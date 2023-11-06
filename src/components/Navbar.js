@@ -1,12 +1,16 @@
 import logo from "./img/logo.jpg";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
-const Navbar = () => {
+const Navbar = (props) => {
+   
   return (
-    <nav className="navbar navbar-expand-lg fixed-top bg-body-tertiary  shadow">
+    <nav className="navbar navbar-expand-lg fixed-top bg-body-tertiary shadow">
       <div
         className="container-fluid p-3 shadow rounded"
-        style={{ backgroundColor: "#4C2E9F", textShadow: 50, marginTop: "-10px" }}
+        style={{ backgroundColor: "#4C2E9F", marginTop: "-10px" }}
       >
         <img
           className="rounded-3"
@@ -19,7 +23,6 @@ const Navbar = () => {
           style={{ fontWeight: "bold" }}
           href="#"
         >
-          {" "}
           Shoes Mania
         </a>
 
@@ -40,7 +43,7 @@ const Navbar = () => {
         >
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link to="../" style={{textDecoration:"none"}}>
+              <Link to="/" style={{ textDecoration: "none" }}>
                 <p
                   className="nav-link active text-white mt-3"
                   aria-current="page"
@@ -87,31 +90,51 @@ const Navbar = () => {
               </a>
             </li>
             <li className="nav-item">
-              <Link to="/adminpanel/create" style={{textDecoration:"none"}}>
-                <p className="nav-link text-white mt-3" href="#">
-                  Admin Panel
-                </p>
+              <Link to="/adminpanel/create" style={{ textDecoration: "none" }}>
+                <p className="nav-link text-white mt-3">Admin Panel</p>
               </Link>
             </li>
           </ul>
-          <form className="d-flex" role="search">
+          <div class="form-check form-switch mx-2">
             <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
+              className="form-check-input"
+              type="checkbox"
+              role="switch"
+              id="flexSwitchCheckDefault"
+              onClick={props.tggleMode}
             />
-            <button
-              className="btn btn-outline-blue text-dark bg-white"
-              type="submit"
-              style={{ hover: { backgroundColor: "#9E69CD" } }}
-            >
-              Search
-            </button>
-          </form>
+            <label className="form-check-label" for="flexSwitchCheckDefault">
+              Dark Mode
+            </label>
+          </div>
+          <div className="d-flex align-items-center">
+            <div className="cart-icon position-relative me-3">
+              <FontAwesomeIcon icon={faShoppingCart} size="lg" />
+              {props.cartCount > 0 && (
+                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  {props.cartCount}
+                </span>
+              )}
+            </div>
+            <form className="d-flex" role="search">
+              <input
+                className="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button
+                className="btn btn-outline-blue text-dark bg-white"
+                type="submit"
+              >
+                Search
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </nav>
   );
 };
+
 export default Navbar;
