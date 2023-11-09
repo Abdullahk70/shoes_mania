@@ -2,10 +2,10 @@ import { useState,useEffect } from "react";
 import Card from "./Card";
 const Sportsshoes=()=>{
     const [sportsshoes,setsportsshoes]=useState([
-        { title:"Men's Comfy Sports Shoes",pic:"https://sunsports.pk/wp-content/uploads/2022/09/RBK-G55863...webp",price:"PKR 9999.00"},
-        { title:"Rebook Lite 2",pic:"https://sunsports.pk/wp-content/uploads/2022/09/RBK-FW8025..webp",price:"PKR 5599.00"},
-        { title:"Calza Sports pro",pic:"https://www.calza.com.pk/cdn/shop/products/1_be26f02a-4d0d-40f8-a4dd-bcb390665b59_800x.jpg?v=1667285475",price:"PKR 5699.00"},
-        { title:"Calza Comfy 2",pic:"https://www.calza.com.pk/cdn/shop/products/1_845c5590-874e-4fd0-b64e-60f4ad5fdfba.jpg?v=1666171330",price:"PKR 7899.00"},
+        { title:"Men's Comfy Sports Shoes",pic:"https://sunsports.pk/wp-content/uploads/2022/09/RBK-G55863...webp",price: 9999.00},
+        { title:"Rebook Lite 2",pic:"https://sunsports.pk/wp-content/uploads/2022/09/RBK-FW8025..webp",price: 5599.00},
+        { title:"Calza Sports pro",pic:"https://www.calza.com.pk/cdn/shop/products/1_be26f02a-4d0d-40f8-a4dd-bcb390665b59_800x.jpg?v=1667285475",price: 5699.00},
+        { title:"Calza Comfy 2",pic:"https://www.calza.com.pk/cdn/shop/products/1_845c5590-874e-4fd0-b64e-60f4ad5fdfba.jpg?v=1666171330",price: 7899.00},
     ]);
 
     // useEffect(() => {

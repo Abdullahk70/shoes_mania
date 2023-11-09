@@ -1,11 +1,23 @@
 import logo from "./img/logo.jpg";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart, faUser } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = (props) => {
-   
+  const [showUserMenu, setShowUserMenu] = useState(false); // State for user menu
+
+  const userDropdown = (
+    <div className="user-dropdown">
+      <Link to="../login"><button className="dropdown-item" onClick={() => setShowUserMenu(false)}>
+        Login
+      </button></Link>
+      <Link to="../signup"><button className="dropdown-item" onClick={() => setShowUserMenu(false)}>
+        Sign Up
+      </button></Link>
+    </div>
+  );
+
   return (
     <nav className="navbar navbar-expand-lg fixed-top bg-body-tertiary shadow">
       <div
@@ -65,22 +77,27 @@ const Navbar = (props) => {
               </a>
               <ul className="dropdown-menu">
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <Link to="/SportsScreen" className="dropdown-item">
                     Sports Shoes
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
-                    Casual+Formal wear
-                  </a>
+                  <Link to="/CasualScreen" className="dropdown-item">
+                    Casual Shoes
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/FormalScreen" className="dropdown-item">
+                    Formal Wear
+                  </Link>
                 </li>
                 <li>
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <Link to="/AllScreen" className="dropdown-item">
                     Show all Articles
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </li>
@@ -95,7 +112,7 @@ const Navbar = (props) => {
               </Link>
             </li>
           </ul>
-          <div class="form-check form-switch mx-2">
+          <div className="form-check form-switch mx-2">
             <input
               className="form-check-input"
               type="checkbox"
@@ -103,13 +120,15 @@ const Navbar = (props) => {
               id="flexSwitchCheckDefault"
               onClick={props.tggleMode}
             />
-            <label className="form-check-label" for="flexSwitchCheckDefault">
+            <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
               Dark Mode
             </label>
           </div>
           <div className="d-flex align-items-center">
             <div className="cart-icon position-relative me-3">
-              <FontAwesomeIcon icon={faShoppingCart} size="lg" />
+              <Link to="/Checkout">
+                <FontAwesomeIcon icon={faShoppingCart} size="lg" />
+              </Link>
               {props.cartCount > 0 && (
                 <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                   {props.cartCount}
@@ -130,6 +149,15 @@ const Navbar = (props) => {
                 Search
               </button>
             </form>
+
+            {/* User icon with dropdown */}
+            <div
+              className="user-icon mx-3"
+              onClick={() => setShowUserMenu(!showUserMenu)}
+            >
+              <FontAwesomeIcon icon={faUser} size="lg" />
+              {showUserMenu && userDropdown}
+            </div>
           </div>
         </div>
       </div>

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-
-function Checkout({ items }) {
+function Checkout(props) {
   const [cart, setCart] = useState(
-    items.map(item => ({
+    props.items.map(item => ({
       ...item,
      
     }))
@@ -25,7 +25,8 @@ function Checkout({ items }) {
   };
 
   return (
-    <div className="container mt-5">
+    <div style={{background:props.mde.bg}}className={`container-fluid bg-${props.mde.bg}`}>
+    <div className={`container mt-5 `}>
       <div className="card">
         <div className="card-header">
           <h2 className="text-center">Checkout</h2>
@@ -47,14 +48,14 @@ function Checkout({ items }) {
                   <td>
                     <div className="d-flex align-items-center">
                       <img style={{width:"10%",}}
-                        src={item.image} // Assuming you have an 'image' property in your item object
+                        src={item.pic}
                         alt={item.name}
                         className="item-image"
                       />
                       <span className="mx-3 font-weight-bold font-italic" >{item.name}</span>
                     </div>
                   </td>
-                  <td>${item.price}</td>
+                  <td>PKR {item.price}</td>
                   <td>
                     <input
                       type="number"
@@ -65,7 +66,7 @@ function Checkout({ items }) {
                       }
                     />
                   </td>
-                  <td>${(item.price * item.quantity)}</td>
+                  <td>PKR {parseInt(item.price,10) * parseInt(item.quantity,10)}</td>
                   <td>
                     <button
                       className="btn btn-danger"
@@ -79,11 +80,12 @@ function Checkout({ items }) {
             </tbody>
           </table>
           <div className="text-end">
-            <p className="fw-bold">Grand Total: ${calculateTotal()}</p>
-            <button className="btn btn-primary">Proceed to Payment</button>
+            <p className="fw-bold">Grand Total: PKR {calculateTotal()}</p>
+            <Link to="PaymentForm" > <button className="btn btn-primary">Proceed to Payment</button></Link>
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }
