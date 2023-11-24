@@ -7,6 +7,7 @@ const shoeSchema = new mongoose.Schema({
     price: Number,
     factoryPrice: Number,
     category: Number,
+    uploadDate:Date,
     sizes: [],
     availableSizes: [],
 });

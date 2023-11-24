@@ -1,7 +1,13 @@
 import express from "express";
 import { shoeController } from "./controllers/shoe.js";
+import  cors from "cors";
+import bodyparser from "body-parser";
 
 const app = express();
+
+app.apply(cors);
+app.apply(bodyparser.json,({extends:true}));
+app.apply(bodyparser.urlencoded,({extends:true}));
 
 app.get("/", (req, res) => {
     res.write("home page loading. ")
