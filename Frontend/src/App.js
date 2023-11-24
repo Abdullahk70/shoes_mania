@@ -12,6 +12,7 @@ import AllArticleScreen from "./components/AllArticlesScreen";
 import FormalScreen from "./components/FormalScreen";
 import Login from "./Login";
 import SignUp from "./Signup";
+import Test from "./test";
 
 export const typeContext=createContext();
 export const setCartContext=createContext();
@@ -104,6 +105,7 @@ function toggleMode(){
     <div>
       <Navbar tggleMode={toggleMode} cartCount={cartCount} />
       
+       
       <Alert Alert={alert}></Alert>
 
           <Routes>
