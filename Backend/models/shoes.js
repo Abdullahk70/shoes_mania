@@ -6,7 +6,7 @@ const shoeSchema = new mongoose.Schema({
     pic: String, 
     price: Number,
     factoryPrice: Number,
-    category: Number,
+    category: String,
     uploadDate:Date,
     sizes: [],
     availableSizes: [],
