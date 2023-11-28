@@ -1,20 +1,42 @@
+import {useState} from "react"
+
 const Form=()=>{
+
+const [product,setProduct]=useState({
+  name:"",
+  id:"",
+  pic:"",
+  price:0,
+  description:"",
+  category:"",
+  size:0,
+})
+
+const changeData=(e)=>{
+  
+ setProduct({
+  ...product,
+  [e.target.name]:e.target.value,
+ });
+ print();
+}
+const print=()=>{console.log(product)}
 return  <form className="row g-3">
 <div className="col-md-6">
   <label for="inputName" className="form-label">Product Name</label>
-  <input type="text" className="form-control" id="productname" placeholder="i.e This is product name"/>
+  <input type="text" name="name" onChange={changeData} className="form-control" id="productname" placeholder="i.e This is product name"/>
 </div>
 <div className="col-md-6">
   <label for="Product-ID" className="form-label">Product ID</label>
-  <input  className="form-control" id="productid" placeholder="i.e This is product ID" />
+  <input  className="form-control" onChange={changeData} name="id" id="productid" placeholder="i.e This is product ID" />
 </div>
 <div className="col-12">
   <label for="inputDescription" className="form-label">Product Description</label>
-  <input type="text" className="form-control" id="inputAddress" placeholder="i.e This is product description" />
+  <input type="text" onChange={changeData} className="form-control" name="description" id="inputAddress" placeholder="i.e This is product description" />
 </div>
 <div className="col-12">
   <label for="inputState" className="form-label">Product Type</label>
-  <select id="inputState" className="form-select">
+  <select id="inputState" onChange={changeData} name="category" className="form-select">
     <option selected>Choose From Categories</option>
     <option>Sports Shoes</option>
     <option>Formal Shoes</option>
@@ -23,11 +45,11 @@ return  <form className="row g-3">
 </div>
 <div className="col-md-6">
   <label for="PRICE" className="form-label">Price in PKR</label>
-  <input type="text" className="form-control" id="PRICE" />
+  <input type="text" name="price" className="form-control" onChange={changeData} id="PRICE" />
 </div>
 <div className="col-md-4">
   <label for="size" className="form-label">Size</label>
-  <select id="size" className="form-select">
+  <select id="size" name="size" onChange={changeData} className="form-select">
     <option selected>Choose the size available</option>
     <option>28</option>
     <option>32</option>
@@ -39,8 +61,8 @@ return  <form className="row g-3">
   </select>
 </div>
 <div className="col-md-2">
-  <label for="input" className="form-label">Upload Picture</label>
-  <input type="file" className="form-control" id="input" />
+  <label for="input" name="pic" onChange={changeData} className="form-label">Upload Picture</label>
+  <input type="text" className="form-control" id="input" />
 </div>
 
 <div className="col-12">

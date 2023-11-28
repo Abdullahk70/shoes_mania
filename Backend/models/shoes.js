@@ -1,15 +1,15 @@
 import mongoose from "mongoose";
 
 const shoeSchema = new mongoose.Schema({
-    title: String,
-    id: Number,
+    name: String,
+    id: String,
     pic: String, 
-    price: Number,
-    factoryPrice: Number,
+    price: String,
+    description:String,
     category: String,
     uploadDate:Date,
-    sizes: [],
-    availableSizes: [],
+    size: String,
+    
 });
 
 export const shoeModel = mongoose.model("shoe", shoeSchema);
