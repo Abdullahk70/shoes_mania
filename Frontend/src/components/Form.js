@@ -1,4 +1,6 @@
+import axios from "axios"
 import {useState} from "react"
+import { connectToAxios } from "../services/api"
 
 const Form=()=>{
 
@@ -12,8 +14,9 @@ const [product,setProduct]=useState({
   size:0,
 })
 
-const sendData=()=>{
-  
+const sendData=(e)=>{
+  e.preventDefault();
+connectToAxios(product);
 }
 
 const changeData=(e)=>{
@@ -65,12 +68,12 @@ return  <form className="row g-3">
   </select>
 </div>
 <div className="col-md-2">
-  <label for="input" name="pic" onChange={changeData} className="form-label">Upload Picture</label>
-  <input type="text" className="form-control" id="input" />
+  <label for="input"  className="form-label">Upload Picture</label>
+  <input type="text" name="pic" onChange={changeData} className="form-control" id="input" />
 </div>
 
 <div className="col-12">
-  <button type="" onClick={sendData} className="btn btn-primary "style={{backgroundColor:"green"}}>Create</button>
+  <button onClick={sendData} className="btn btn-primary "style={{backgroundColor:"green"}}>Create</button>
 </div>
 </form>
 }
