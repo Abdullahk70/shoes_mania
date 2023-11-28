@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react'
+import { connectToAxios } from '../services/api';
 
 export default function ViewForm() {
   const inputref=useRef("");
@@ -32,13 +33,18 @@ export default function ViewForm() {
    const handleClick=()=>{
     // console.log=(inputref.current);
     
-    inputref.current.focus();
-    alert("Kindly fill in the required fields");
-    inputref.current.style.backgroundColor="yellow";
+    // inputref.current.focus();
+    // alert("Kindly fill in the required fields");
+    // inputref.current.style.backgroundColor="yellow";
+    alert(JSON.stringify(view))
+    connectToAxios(view);
+  }
+  const formSubmit=(e)=>{
+   e.preventDefault();
   }
   
   return (
-    <form className="row g-3">
+    <form className="row g-3" onSubmit={formSubmit}>
     <div className="col-md-6">
       <label for="inputName" className="form-label">Product Name</label>
       <input type="text" ref={inputref} className="form-control"name="Name" value={view.name} id="productname "onChange={onChange} placeholder="i.e This is product name"/>
@@ -50,7 +56,7 @@ export default function ViewForm() {
     
     
     <div className="col-12">
-      <button type="submit" onClick={handleClick} className="btn btn-primary "style={{backgroundColor:"#4C2E9F"}}>View</button>
+      <button  onClick={handleClick} className="btn btn-primary "style={{backgroundColor:"#4C2E9F"}}>View</button>
     </div>
     </form>
   )

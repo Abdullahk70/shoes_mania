@@ -1,23 +1,21 @@
 import express from "express";
-import { shoeController } from "./controllers/shoe.js";
 import  cors from "cors";
 import bodyparser from "body-parser";
 import mongoose from "mongoose";
+import router from "./routes/shoesMania.js";
 
 const app = express();
 
-// app.apply(cors);
-// app.apply(bodyparser.json,({extends:true}));
-// app.apply(bodyparser.urlencoded,({extends:true}));
-
+ app.use(cors());
+ app.use(bodyparser.json({extends:true}));
+ app.use(bodyparser.urlencoded({extends:true}));
+ app.use("/shoesMania",router)
 
 const url="mongodb+srv://abdullah:123@cluster0.qfbdxft.mongodb.net/";
 mongoose.connect(url).then(()=>{console.log("connected")});
 
-// app.get("/", (req, res) => {
-//     res.write("home page loading. ")
-//     res.end();
-// });
+
+
 
 // app.get("/shoes", shoeController )
 

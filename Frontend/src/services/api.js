@@ -1,7 +1,7 @@
 import axios from "axios"
-const url="http://localhost:8000";
+const url="http://localhost:5000";
 
-export const connectToAxios=async ()=>{
-    console.log("Request recieved");
-    return await axios.get(url);
+export const connectToAxios=async (data)=>{
+    alert(JSON.stringify(data));
+    console.log(await axios.post(`${url}/shoesMania`,data));
 }
