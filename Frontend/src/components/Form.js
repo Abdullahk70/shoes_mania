@@ -12,11 +12,15 @@ const [product,setProduct]=useState({
   size:0,
 })
 
+const sendData=()=>{
+  
+}
+
 const changeData=(e)=>{
   
  setProduct({
   ...product,
-  [e.target.name]:e.target.value,
+  [e.target.name]:e.target.value
  });
  print();
 }
@@ -66,7 +70,7 @@ return  <form className="row g-3">
 </div>
 
 <div className="col-12">
-  <button type="submit" className="btn btn-primary "style={{backgroundColor:"green"}}>Create</button>
+  <button type="" onClick={sendData} className="btn btn-primary "style={{backgroundColor:"green"}}>Create</button>
 </div>
 </form>
 }
