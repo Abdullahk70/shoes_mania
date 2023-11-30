@@ -1,8 +1,8 @@
 import { shoeModel } from "../models/shoes.js";
 
 export const shoeGetController = (req, res) => {
-    res.write("Shoe page loading. ");
-    res.end();
+    const shoes=shoeModel.find();
+    res.json(shoes);
 }
 export const shoePostController = (req, res) => {
     console.log(req.body);
