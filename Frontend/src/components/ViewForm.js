@@ -1,54 +1,41 @@
 import React, { useRef, useState } from 'react'
-import { connectToAxios } from '../services/api';
+import { connectToAxios, getProducts } from '../services/api';
 
 export default function ViewForm() {
   const inputref=useRef("");
 
   const [view,setView]=useState({
-    name:"",
     id:"",
   })
+  const[prods,setProds]=useState();
 
 
    const onChange=(event)=>{
-    let nme=event.target.name;
-    setView((prevValue)=>{
-        if(nme=="Name"){
-          return{
-            name:event.target.value,
-            id:prevValue.id,
-          }
-        }
-        else if(nme=="id"){
-          return{
-            name:prevValue.name,
-            id:event.target.value,
-          }
-        }
-    });
+    
+    setView({id:event.target.value});
 
    
 
    }
-   const handleClick=()=>{
+   const handleClick=async ()=>{
     // console.log=(inputref.current);
     
     // inputref.current.focus();
     // alert("Kindly fill in the required fields");
     // inputref.current.style.backgroundColor="yellow";
-    alert(JSON.stringify(view))
-    connectToAxios(view);
+    alert(JSON.stringify(view));
+    const res=await getProducts();
+    setProds(res);
+    
   }
-  const formSubmit=(e)=>{
+  const formSubmit= (e)=>{
    e.preventDefault();
+    
   }
   
   return (
     <form className="row g-3" onSubmit={formSubmit}>
-    <div className="col-md-6">
-      <label for="inputName" className="form-label">Product Name</label>
-      <input type="text" ref={inputref} className="form-control"name="Name" value={view.name} id="productname "onChange={onChange} placeholder="i.e This is product name"/>
-    </div>
+    
     <div className="col-md-6">
       <label for="Product-ID" className="form-label">Product ID</label>
       <input  className="form-control" name="id" value={view.id} id="productid" onChange={onChange} placeholder="i.e This is product ID" />
