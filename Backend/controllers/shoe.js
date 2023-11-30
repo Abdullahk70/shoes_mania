@@ -1,8 +1,9 @@
 import { shoeModel } from "../models/shoes.js";
 
-export const shoeGetController = (req, res) => {
-    const shoes=shoeModel.find();
+export const shoeGetController = async(req, res) => {
+    const shoes=await shoeModel.find();
     res.json(shoes);
+    
 }
 export const shoePostController = (req, res) => {
     console.log(req.body);

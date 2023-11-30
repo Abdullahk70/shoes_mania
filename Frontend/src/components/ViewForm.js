@@ -24,7 +24,7 @@ export default function ViewForm() {
     // alert("Kindly fill in the required fields");
     // inputref.current.style.backgroundColor="yellow";
     alert(JSON.stringify(view));
-    const res=await getProducts();
+    const res=await getProducts(view.id);
     setProds(res);
     
   }
