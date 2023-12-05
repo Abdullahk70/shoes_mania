@@ -10,7 +10,7 @@ const Formalshoes=()=>{
       try {
         const products = await getProducts(); 
  
-        const formalProducts = products.data.filter((product) => product.category === "formal");
+        const formalProducts = products.data.filter((product) => product.category === "Formal Shoes");
  
         setFormalShoes(formalProducts);
         

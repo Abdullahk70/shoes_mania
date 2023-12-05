@@ -10,10 +10,10 @@ const CasualShoes = () => {
      try {
        const products = await getProducts(); 
 
-       const casualProducts = products.data.filter((product) => product.category === "casual");
+       const casualProducts = products.data.filter((product) => product.category === "Casual Shoes");
 
        setCasualShoes(casualProducts);
-       console.log(JSON.stringify(casualProducts));
+     
      } catch (error) {
        console.error("Error fetching products:", error);
      }
