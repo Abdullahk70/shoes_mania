@@ -1,8 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function UpdateForm() {
+  const [view,setView]=useState({
+    id:"",
+  });
+
+  const onChange=(e)=>{
+setView({id:e.target.value});
+setProd({id:view.id})
+  }
+  const onClick=()=>{
+
+  }
+  const onSubmit=(e)=>{
+    setProd("ok");
+    e.preventDefault();
+  }
+
+  const [prod,setProd]=useState("k");
   return (
-    <form className="row g-3">
+    <div>
+    <form className="row g-3" onSubmit={onSubmit}>
+
+<div className="col-md-6">
+  <label for="Product-ID" className="form-label" onChange={onChange} value={view.id}>Product ID</label>
+  <input  className="form-control" id="productid" placeholder="i.e This is product ID" />
+</div>
+
+{prod!=="k" && <div>
 <div className="col-md-6">
   <label for="inputName" className="form-label">Product Name</label>
   <input type="text" className="form-control" id="productname" placeholder="i.e This is product name"/>
@@ -46,9 +71,16 @@ export default function UpdateForm() {
   <input type="file" className="form-control" id="input" />
 </div>
 
+</div>
+
+
+}
+
+
 <div className="col-12">
-  <button type="submit" className="btn btn-primary bg-warning">Update</button>
+  <button type="submit" className="btn btn-primary bg-warning" onClick={onClick}>Update</button>
 </div>
 </form>
+</div>
   )
 }
