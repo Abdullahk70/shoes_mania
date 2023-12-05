@@ -12,31 +12,27 @@ export default function ViewForm() {
 
 
    const onChange=(event)=>{
-    
     setView({id:event.target.value});
-
-   
-
    }
 
-   const [casualShoes, setCasualShoes] = useState([]);
+  //  const [casualShoes, setCasualShoes] = useState([]);
 
-   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const products = await getProducts(); 
+  //  useEffect(() => {
+  //   const fetchProducts = async () => {
+  //     try {
+  //       const products = await getProducts(); 
  
-        const casualProducts = products.data;
+  //       const casualProducts = products.data;
  
-        setCasualShoes(casualProducts);
-        console.log(JSON.stringify(casualProducts));
-      } catch (error) {
-        console.error("Error fetching products:", error);
-      }
-    };
+  //       setCasualShoes(casualProducts);
+  //       console.log(JSON.stringify(casualProducts));
+  //     } catch (error) {
+  //       console.error("Error fetching products:", error);
+  //     }
+  //   };
  
-    fetchProducts();
-  }, []);
+  //   fetchProducts();
+  // }, []);
 
   
    const handleClick=async ()=>{
@@ -46,7 +42,10 @@ export default function ViewForm() {
     // alert("Kindly fill in the required fields");
     // inputref.current.style.backgroundColor="yellow";
     alert(JSON.stringify(view));
-    const res=await getProducts(view.id);
+    let res=await getProducts();
+    res=res.data.filter((itm)=>itm.id===view.id)
+    setProds(res)
+    alert(JSON.stringify(res));
     setProds(res);
     
   }
@@ -57,6 +56,7 @@ export default function ViewForm() {
   
   
   return (
+    <>
     <form className="row g-3" onSubmit={formSubmit}>
     
     <div className="col-md-6">
@@ -72,5 +72,6 @@ export default function ViewForm() {
 
     </form>
     
+    </>
   )
 }
