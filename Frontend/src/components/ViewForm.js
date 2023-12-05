@@ -1,6 +1,7 @@
 import React, { useRef, useState,useEffect } from 'react'
 import { connectToAxios, getProducts } from '../services/api';
-import { Card } from 'react-bootstrap';
+import Card from "./Card"
+import viewCard from './viewCard';
 
 export default function ViewForm() {
   const inputref=useRef("");
@@ -8,7 +9,7 @@ export default function ViewForm() {
   const [view,setView]=useState({
     id:"",
   })
-  const[prods,setProds]=useState();
+  const[prods,setProds]=useState("k");
 
 
    const onChange=(event)=>{
@@ -41,12 +42,12 @@ export default function ViewForm() {
     // inputref.current.focus();
     // alert("Kindly fill in the required fields");
     // inputref.current.style.backgroundColor="yellow";
-    alert(JSON.stringify(view));
+  
     let res=await getProducts();
     res=res.data.filter((itm)=>itm.id===view.id)
-    setProds(res)
-    alert(JSON.stringify(res));
-    setProds(res);
+   
+    setProds(res[0]);
+    
     
   }
   const formSubmit= (e)=>{
@@ -56,7 +57,7 @@ export default function ViewForm() {
   
   
   return (
-    <>
+    <div className=''>
     <form className="row g-3" onSubmit={formSubmit}>
     
     <div className="col-md-6">
@@ -68,10 +69,12 @@ export default function ViewForm() {
     <div className="col-12">
       <button  onClick={handleClick} className="btn btn-primary "style={{backgroundColor:"#4C2E9F"}}>View</button>
     </div>
-
+    {prods!=="k" && <div>
+  <Card title={prods.name} pic={prods.pic} description={prods.price}/>
+  </div>}
 
     </form>
-    
-    </>
+   
+    </div>
   )
 }

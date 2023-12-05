@@ -5,5 +5,5 @@ const router=express.Router();
 
 router.get("/",shoeGetController);
 router.post("/",shoePostController);
-router.delete("/:id",shoeDeleteController)
+router.delete("/:id",shoeDeleteController);
 export default router;

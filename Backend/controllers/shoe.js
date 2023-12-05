@@ -9,8 +9,6 @@ export const shoeDeleteController = async(req, res) => {
   const id=req.param.id;
   console.log(id);
   // await shoeModel.findOneAndDelete({"id":id});
-
-  
 }
 export const shoePostController = (req, res) => {
     

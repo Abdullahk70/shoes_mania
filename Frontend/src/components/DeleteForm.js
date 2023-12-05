@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import { delProduct } from '../services/api';
+import { getProducts } from '../services/api';
 
 export default function DeleteForm() {
 
   const [data,setdata]=useState({
     id:"",
   });
+  const[prods,setProds]=useState();
   const onChange=(e)=>{
    setdata({id:e.target.value});
   };
@@ -14,7 +16,15 @@ export default function DeleteForm() {
      
    }
    const onClick=async()=>{
-    await delProduct(data.id);
+  
+    let res=await getProducts();
+    res=res.data.filter((itm)=>itm.id===data.id);
+    
+     setProds(res[0]);
+    alert(JSON.stringify(prods._id));
+      
+
+     await delProduct(prods._id);
    }
    
   return (

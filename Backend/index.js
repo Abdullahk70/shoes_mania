@@ -17,8 +17,9 @@ const app = express();
  app.delete("/shoesManiaDelete/:id",async (req,res)=>{
 
 const id=req.params.id.slice(1);
+
 console.log(id);
- shoeModel.findOneAndDelete(id);
+await shoeModel.findByIdAndDelete(id);
  });
  
 const url="mongodb+srv://abdullah:123@cluster0.qfbdxft.mongodb.net/";
