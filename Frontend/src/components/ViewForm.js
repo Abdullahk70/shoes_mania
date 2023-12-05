@@ -1,5 +1,6 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState,useEffect } from 'react'
 import { connectToAxios, getProducts } from '../services/api';
+import { Card } from 'react-bootstrap';
 
 export default function ViewForm() {
   const inputref=useRef("");
@@ -17,6 +18,27 @@ export default function ViewForm() {
    
 
    }
+
+   const [casualShoes, setCasualShoes] = useState([]);
+
+   useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const products = await getProducts(); 
+ 
+        const casualProducts = products.data;
+ 
+        setCasualShoes(casualProducts);
+        console.log(JSON.stringify(casualProducts));
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+ 
+    fetchProducts();
+  }, []);
+
+  
    const handleClick=async ()=>{
     // console.log=(inputref.current);
     
@@ -33,6 +55,7 @@ export default function ViewForm() {
     
   }
   
+  
   return (
     <form className="row g-3" onSubmit={formSubmit}>
     
@@ -45,6 +68,9 @@ export default function ViewForm() {
     <div className="col-12">
       <button  onClick={handleClick} className="btn btn-primary "style={{backgroundColor:"#4C2E9F"}}>View</button>
     </div>
+
+
     </form>
+    
   )
 }
