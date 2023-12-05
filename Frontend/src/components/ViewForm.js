@@ -45,7 +45,7 @@ export default function ViewForm() {
   
     let res=await getProducts();
     res=res.data.filter((itm)=>itm.id===view.id)
-   
+    setView({id:""})
     setProds(res[0]);
     
     

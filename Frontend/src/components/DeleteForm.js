@@ -1,46 +1,67 @@
-import React, { useState } from 'react'
-import { delProduct } from '../services/api';
-import { getProducts } from '../services/api';
+import React, { useState } from 'react';
+import { delProduct, getProducts } from '../services/api';
 
 export default function DeleteForm() {
-
-  const [data,setdata]=useState({
-    id:"",
+  const [data, setData] = useState({
+    id: "",
   });
-  const[prods,setProds]=useState();
-  const onChange=(e)=>{
-   setdata({id:e.target.value});
-  };
-  const formSubmit= (e)=>{
-    e.preventDefault();
-     
-   }
-   const onClick=async()=>{
-  
-    let res=await getProducts();
-    res=res.data.filter((itm)=>itm.id===data.id);
-    
-     setProds(res[0]);
-    alert(JSON.stringify(prods._id));
-      
 
-     await delProduct(prods._id);
-   }
-   
+  const [prods, setProds] = useState(null);
+
+  const onChange = (e) => {
+    setData({ id: e.target.value });
+  };
+
+  const formSubmit = (e) => {
+    e.preventDefault();
+    // You can perform additional actions here if needed
+  };
+
+  const onClick = async () => {
+    try {
+      let res = await getProducts();
+      const filteredProducts = res.data.filter((itm) => itm.id === data.id);
+      setData({ id: "" });
+      if (filteredProducts.length > 0) {
+        setProds(filteredProducts[0]);
+        await delProduct(filteredProducts[0]._id);
+        alert('Product deleted successfully');
+         // Clear the form
+      } else {
+        alert('Product not found');
+      }
+    } catch (error) {
+      console.error('Error deleting product:', error);
+    }
+    
+  };
+
   return (
     <form className="row g-3" onSubmit={formSubmit}>
+      <div className="col-md-6">
+        <label htmlFor="Product-ID" className="form-label">
+          Product ID
+        </label>
+        <input
+          className="form-control"
+          value={data.id}
+          id="productid"
+          onChange={onChange}
+          placeholder="i.e This is product ID"
+        />
+      </div>
 
-<div className="col-md-6">
-  <label for="Product-ID" className="form-label" >Product ID</label>
-  <input  className="form-control" value={data.id} id="productid" onChange={onChange} placeholder="i.e This is product ID" />
-</div>
-
-
-
-
-<div className="col-12">
-  <button type="submit" className="btn btn-primary "style={{backgroundColor:"red"}} onClick={onClick}>Delete</button>
-</div>
-</form>
-  )
+      <div className="col-12">
+        <button
+          type="button"
+          className="btn btn-primary"
+          style={{ backgroundColor: "red" }}
+          onClick={onClick}
+        >
+          Delete
+        </button>
+      </div>
+    </form>
+  );
 }
+
