@@ -40,8 +40,6 @@ app.listen(5000);
 
 
 
-
-
 // // import http from "http"
 // // import nodemon from "nodemon";
 // // import mongoose from "mongoose";
