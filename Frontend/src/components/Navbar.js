@@ -102,9 +102,9 @@ const Navbar = (props) => {
               </ul>
             </li>
             <li className="nav-item">
-              <a className="nav-link text-white mt-3" href="#">
-                Trending
-              </a>
+              <Link className="nav-link text-white mt-3" to="/Testimonials">
+                Testimonials
+              </Link>
             </li>
             <li className="nav-item">
               <Link to="/adminpanel/create" style={{ textDecoration: "none" }}>

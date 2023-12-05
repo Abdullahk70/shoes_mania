@@ -13,6 +13,7 @@ import FormalScreen from "./components/FormalScreen";
 import Login from "./Login";
 import SignUp from "./Signup";
 import Test from "./test";
+import Testimonials from "./components/Testimonials";
 
 export const typeContext=createContext();
 export const setCartContext=createContext();
@@ -124,6 +125,7 @@ function toggleMode(){
         <Route path="/Checkout" element={<Checkout items={cartItems} addToCart={addToCart} mde={mode} removeFromCart={removeFromCart}/>} />
         <Route path="/Checkout/PaymentForm" element={<PaymentForm grandTotal={total} mde={mode}/>} />
        <Route path="/login" element={<Login/>}/>
+       <Route path="/Testimonials" element={<Testimonials/>}/>
        <Route path="/signup" element={<SignUp/>}/>
       </Routes>
 
