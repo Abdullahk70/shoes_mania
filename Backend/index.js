@@ -4,6 +4,7 @@ import bodyparser from "body-parser";
 import mongoose from "mongoose";
 import router from "./routes/shoesMania.js";
 import { shoeModel } from "./models/shoes.js";
+import { testimonialModel } from "./models/testimonial.js";
 
 const app = express();
 
@@ -23,6 +24,15 @@ const id=req.params.id.slice(1);
 console.log(id);
 await shoeModel.findByIdAndDelete(id);
  });
+
+
+ app.delete("/shoesManiaDeleteTestimonials/:id",async (req,res)=>{
+
+     const id=req.params.id.slice(1);
+    
+    
+    await testimonialModel.findByIdAndDelete(id);
+     });
  
 const url="mongodb+srv://abdullah:123@cluster0.qfbdxft.mongodb.net/";
 mongoose.connect(url).then(()=>{console.log("connected")});
