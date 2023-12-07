@@ -8,6 +8,9 @@ export const connectToAxios=async (data)=>{
 export const getProducts=async ()=>{
    return await axios.get(`${url}/shoesManiaView`);
 }
+export const getUsers=async ()=>{
+    return await axios.get(`${url}/shoesMania/Users`);
+ }
 export const delProduct=async(id)=>{
     
     await axios.delete(`${url}/shoesManiaDelete/:${id}`,id);

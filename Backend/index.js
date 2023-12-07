@@ -13,7 +13,7 @@ const app = express();
  app.use(bodyparser.urlencoded({extends:true}));
  app.use("/shoesMania",router);
  app.use("/shoesManiaView",router);
- app.use("/shoesManiaView",router);
+ app.use("/shoesMania",router);
  app.use("/shoesMania",router);
 //  app.use("/shoesManiaDelete",router);
 

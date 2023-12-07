@@ -12,6 +12,12 @@ export const testimonialsGetController = async(req, res) => {
   res.json(shoes);
   
 }
+export const UsersGetController = async(req, res) => {
+  const shoes=await userModel.find();
+  res.json(shoes);
+  
+}
+
 export const shoeDeleteController = async(req, res) => {
   const id=req.param.id;
   console.log(id);
