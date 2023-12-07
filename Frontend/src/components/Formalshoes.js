@@ -26,7 +26,7 @@ const Formalshoes=()=>{
      <div className="row container-fluid">
        {formalShoes.map((item) => (
            <div className="col-md-3" key={item.title}>
-             <Card title={item.name} pic={item.pic} description={item.price} />
+             <Card title={item.name} pic={`data:image/jpg;base64,${item.pic}`} description={item.price} />
            </div>
          ))}
      </div>

@@ -5,20 +5,30 @@ const Form = () => {
   const [product, setProduct] = useState({
     name: "",
     id: "",
-    pic: "",
+    pic: null, 
     price: 0,
     description: "",
     category: "",
     size: 0,
   });
-
-  const sendData = (e) => {
+  const sendData = async (e) => {
     e.preventDefault();
-    connectToAxios(product);
+
+    const formData = new FormData();
+    formData.append("name", product.name);
+    formData.append("id", product.id);
+    formData.append("pic", product.pic);
+    formData.append("price", product.price);
+    formData.append("description", product.description);
+    formData.append("category", product.category);
+    formData.append("size", product.size);
+
+    await connectToAxios(formData);
+
     setProduct({
       name: "",
       id: "",
-      pic: "",
+      pic: null,
       price: 0,
       description: "",
       category: "",
@@ -27,19 +37,19 @@ const Form = () => {
   };
 
   const changeData = (e) => {
-    if(e.target.name!="pic"){
-    setProduct({
-      ...product,
-      [e.target.name]: e.target.value,
-    });
-  }
-  else{
-    setProduct({
-      ...product,
-      pic: e.target.files[0],
-    });
-  }
+    if (e.target.name !== "pic") {
+      setProduct({
+        ...product,
+        [e.target.name]: e.target.value,
+      });
+    } else {
+      setProduct({
+        ...product,
+        pic: e.target.files[0], 
+      });
+    }
   };
+  
 
  
 
@@ -145,7 +155,6 @@ const Form = () => {
           type="file"
           name="pic"
           onChange={changeData}
-          value={product.pic}
           className="form-control"
           id="input"
         />
