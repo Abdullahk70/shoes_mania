@@ -24,7 +24,7 @@ const Sportsshoes=()=>{
  return <div className="row container-fluid ">
     {
    sportsShoes.map((itm)=><div className="col-md-3">
-      <Card  title={itm.name} pic={`data:image/jpg;base64,${itm.pic}`}  description={itm.price}/>
+      <Card  title={itm.name} pic={itm.pic}  description={itm.price}/>
       
    </div>)
     }
