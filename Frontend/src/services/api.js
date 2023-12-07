@@ -33,7 +33,3 @@ export const addTestimonials=async(data)=>{
 export const getTestimoanial=async ()=>{
     return await axios.get(`${url}/shoesMania/testimonials`);
  }
- export const delTestimonials=async(id)=>{
-    
-    await axios.delete(`${url}/shoesManiaDeleteTestimonials/:${id}`,id);
-}

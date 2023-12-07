@@ -4,7 +4,6 @@ import bodyparser from "body-parser";
 import mongoose from "mongoose";
 import router from "./routes/shoesMania.js";
 import { shoeModel } from "./models/shoes.js";
-import { testimonialModel } from "./models/testimonial.js";
 
 const app = express();
 
@@ -15,13 +14,23 @@ const app = express();
  app.use("/shoesManiaView",router);
 //  app.use("/shoesManiaDelete",router);
 
+
+
+
+
+
+
+
+
+
+
+
  app.delete("/shoesManiaDelete/:id",async (req,res)=>{
 const id=req.params.id.slice(1);
 await shoeModel.findByIdAndDelete(id);
  });
-
-
  app.delete("/shoesManiaDeleteTestimonials/:id",async (req,res)=>{
+
      const id=req.params.id.slice(1);
     await testimonialModel.findByIdAndDelete(id);
      });
