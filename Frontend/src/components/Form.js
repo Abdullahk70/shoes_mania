@@ -27,16 +27,21 @@ const Form = () => {
   };
 
   const changeData = (e) => {
+    if(e.target.name!="pic"){
     setProduct({
       ...product,
       [e.target.name]: e.target.value,
     });
-    print();
+  }
+  else{
+    setProduct({
+      ...product,
+      pic: e.target.files[0],
+    });
+  }
   };
 
-  const print = () => {
-    console.log(product);
-  };
+ 
 
   return (
     <form className="row g-3">
@@ -137,7 +142,7 @@ const Form = () => {
           Upload Picture
         </label>
         <input
-          type="text"
+          type="file"
           name="pic"
           onChange={changeData}
           value={product.pic}

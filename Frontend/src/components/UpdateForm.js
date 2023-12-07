@@ -191,7 +191,7 @@ export default function UpdateForm() {
                 Upload Picture
               </label>
               <input
-                type="text"
+                type="file"
                 onChange={onChangee}
                 name="pic"
                 value={prod.pic}
