@@ -16,40 +16,25 @@ export default function ViewForm() {
     setView({id:event.target.value});
    }
 
-  //  const [casualShoes, setCasualShoes] = useState([]);
-
-  //  useEffect(() => {
-  //   const fetchProducts = async () => {
-  //     try {
-  //       const products = await getProducts(); 
- 
-  //       const casualProducts = products.data;
- 
-  //       setCasualShoes(casualProducts);
-  //       console.log(JSON.stringify(casualProducts));
-  //     } catch (error) {
-  //       console.error("Error fetching products:", error);
-  //     }
-  //   };
- 
-  //   fetchProducts();
-  // }, []);
-
   
-   const handleClick=async ()=>{
-    // console.log=(inputref.current);
-    
-    // inputref.current.focus();
-    // alert("Kindly fill in the required fields");
-    // inputref.current.style.backgroundColor="yellow";
+   const handleClick = async () => {
+    try {
+      let res = await getProducts();
+      const filteredProducts = res.data.filter((itm) => itm.id === view.id);
   
-    let res=await getProducts();
-    res=res.data.filter((itm)=>itm.id===view.id)
-    setView({id:""})
-    setProds(res[0]);
-    
-    
-  }
+      if (filteredProducts.length > 0) {
+        setProds(filteredProducts[0]);
+      } else {
+        
+        alert('Product not found');
+      }
+  
+      setView({ id: '' });
+    } catch (error) {
+      console.error('Error fetching products:', error.message);
+    }
+  };
+  
   const formSubmit= (e)=>{
    e.preventDefault();
     

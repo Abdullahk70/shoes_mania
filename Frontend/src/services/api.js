@@ -3,11 +3,18 @@ const url="http://localhost:5000";
 
 export const connectToAxios=async (data)=>{
     
-    await axios.post(`${url}/shoesMania`,data);
+    await axios.post(`${url}/shoesMania`, data, {
+        headers: {
+          "Content-Type": "multipart/form-data", 
+        },
+      });
 }
 export const getProducts=async ()=>{
    return await axios.get(`${url}/shoesManiaView`);
 }
+export const getUsers=async ()=>{
+    return await axios.get(`${url}/shoesMania/Users`);
+ }
 export const delProduct=async(id)=>{
     
     await axios.delete(`${url}/shoesManiaDelete/:${id}`,id);
