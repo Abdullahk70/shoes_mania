@@ -15,6 +15,7 @@ export default function SignUp() {
 
  const onClick=()=>{
   addUser(view);
+  alert("signUp done for "+view.email);
   setView({ email:"",
   password:"",
   phoneNumber:"",})

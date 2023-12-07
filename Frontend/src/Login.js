@@ -1,23 +1,56 @@
-import React from 'react'
+import React, { useState } from 'react'
 import login from "./Login.css"
 import { Link } from 'react-router-dom'
+import { getUsers } from './services/api';
+
 
 export default function Login() {
+    const [view,setView]=useState({
+        email:"",
+        password: "",
+    });
+    const onChange=(e)=>{
+  setView({...view,[e.target.name]:e.target.value});
+    }
+    const onSubmit=(e)=>{
+        e.preventDefault();
+    }
+    const handleLogin=async()=>{
+        try {
+            let res = await getUsers();
+            
+            const filteredProducts = res.data.filter((itm) => itm.email == view.email);
+            if(filteredProducts.length==0){
+                alert("user not found");
+            }
+            else{
+            if ( filteredProducts[0].password ==view.password) {
+              alert("successful")
+            } 
+            else{
+                alert("Password Incorrect")
+            }
+            }
+            setView({ email: '',password: '' });
+          } catch (error) {
+            console.error('Error fetching products:', error.message);
+          }
+    }
   return (
     <div className="wrapper bg-white "style={{marginTop:"9rem"}}>
         <div className="h2 text-center">Shoes Mania</div>
         <div className="h4 text-muted text-center pt-2">Enter your login details</div>
-        <form className="pt-3">
+        <form className="pt-3" onSubmit={onSubmit}>
             <div className="form-group py-2">
                 <div className="input-field">
                     <span className="far fa-user p-2"></span>
-                    <input type="text" placeholder="Username or Email Address" required className=""/>
+                    <input type="text" name="email" value={view.email} onChange={onChange} placeholder="Username or Email Address" required className=""/>
                 </div>
             </div>
             <div className="form-group py-1 pb-2">
                 <div className="input-field">
                     <span className="fas fa-lock p-2"></span>
-                    <input type="text" placeholder="Enter your Password" required className=""/>
+                    <input type="text" name="password" value={view.password} onChange={onChange} placeholder="Enter your Password" required className=""/>
                     <button className="btn bg-white text-muted">
                         <span className="far fa-eye-slash"></span>
                     </button>
@@ -34,7 +67,7 @@ export default function Login() {
                     <a href="#" id="forgot">Forgot Password?</a>
                 </div>
             </div>
-            <button className="btn btn-block text-center my-3">Log in</button>
+            <button className="btn btn-block text-center my-3" onClick={handleLogin}>Log in</button>
             <div className="text-center pt-3 text-muted">Not a member? <Link to="../signup"> <p >Sign Up</p></Link></div>
         </form>
     </div>
