@@ -1,7 +1,7 @@
 import { shoeModel } from "../models/shoes.js";
 import { testimonialModel } from "../models/testimonial.js";
 import { userModel } from "../models/user.js";
-import multer from "multer";
+
 export const shoeGetController = async(req, res) => {
     const shoes=await shoeModel.find();
     res.json(shoes);
@@ -23,29 +23,21 @@ export const shoeDeleteController = async(req, res) => {
   console.log(id);
   // await shoeModel.findOneAndDelete({"id":id});
 }
-const storage = multer.memoryStorage();
-const upload = multer({ storage });
-
-
-export const shoePostController =async (req, res) => {
-    const file=req.file;
-    if (!file || !file.buffer) {
-      return res.status(400).json({ error: 'No file uploaded or file is empty.' });
-    }
+export const shoePostController = (req, res) => {
+    
     const model=new shoeModel({
       name:req.body.name,
       id:req.body.id,
-      pic:file.buffer,
+      pic:req.body.pic,
       price:req.body.price,
       description:req.body.description,
       category:req.body.category,
       uploadDate:new Date(),
       size:req.body.size,
     });
-    await model.save();
+    model.save();
 
 }
-
 
 
 export const userPostController = (req, res) => {

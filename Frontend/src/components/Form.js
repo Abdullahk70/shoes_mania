@@ -5,30 +5,20 @@ const Form = () => {
   const [product, setProduct] = useState({
     name: "",
     id: "",
-    pic: null, 
+    pic: "",
     price: 0,
     description: "",
     category: "",
     size: 0,
   });
-  const sendData = async (e) => {
+
+  const sendData = (e) => {
     e.preventDefault();
-
-    const formData = new FormData();
-    formData.append("name", product.name);
-    formData.append("id", product.id);
-    formData.append("pic", product.pic);
-    formData.append("price", product.price);
-    formData.append("description", product.description);
-    formData.append("category", product.category);
-    formData.append("size", product.size);
-
-    await connectToAxios(formData);
-
+    connectToAxios(product);
     setProduct({
       name: "",
       id: "",
-      pic: null,
+      pic: "",
       price: 0,
       description: "",
       category: "",
@@ -37,21 +27,16 @@ const Form = () => {
   };
 
   const changeData = (e) => {
-    if (e.target.name !== "pic") {
-      setProduct({
-        ...product,
-        [e.target.name]: e.target.value,
-      });
-    } else {
-      setProduct({
-        ...product,
-        pic: e.target.files[0], 
-      });
-    }
+    setProduct({
+      ...product,
+      [e.target.name]: e.target.value,
+    });
+    print();
   };
-  
 
- 
+  const print = () => {
+    console.log(product);
+  };
 
   return (
     <form className="row g-3">
@@ -152,9 +137,10 @@ const Form = () => {
           Upload Picture
         </label>
         <input
-          type="file"
+          type="text"
           name="pic"
           onChange={changeData}
+          value={product.pic}
           className="form-control"
           id="input"
         />
