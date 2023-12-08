@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { addTestimonials, getTestimoanial } from '../services/api';
+import { addTestimonials, delTestimonials, getTestimoanial } from '../services/api';
 
 const Testimonials = () => {
   const [testimonials, setTestimonials] = useState([]);
@@ -8,6 +8,7 @@ const Testimonials = () => {
     name: '',
     description: '',
   });
+  const [update,setUpdate]=useState(false);
 
   const fetchData = async () => {
     try {
@@ -23,7 +24,7 @@ const Testimonials = () => {
 
     const intervalId = setInterval(() => {
       fetchData(); // Fetch every 5 seconds
-    }, 2000);
+    }, 1000);
 
     return () => {
       clearInterval(intervalId); // Cleanup interval on component unmount
@@ -39,21 +40,36 @@ const Testimonials = () => {
 
   const addTestimonial = async () => {
     try {
-        const test=newTestimonial;
-        setNewTestimonial({
-            name: '',
-            description: '',
-          });
-      await addTestimonials(test);
-      
+      const test = newTestimonial;
+      setNewTestimonial({
+        name: '',
+        description: '',
+      });
+      await addTestimonials(test).then(()=>{setUpdate(false);});
+
       fetchData(); // Update testimonials after adding a new one
     } catch (error) {
       console.error('Error adding testimonial:', error.message);
     }
+    
+  };
+
+  const handleEdit = (testimo) => {
+    setNewTestimonial(testimo);
+    setUpdate(true);
+  };
+  const updateTestimonial=async()=>{
+    addTestimonial(newTestimonial);
+    delTestimonials(newTestimonial._id);
+    setUpdate(false);
+  }
+
+  const handleDelete = (id) => {
+    delTestimonials(id);
   };
 
   return (
-    <div className="container" style={{ marginTop: "8rem" }}>
+    <div className="container" style={{ marginTop: '8rem' }}>
       <h2 className="text-center mb-4">Testimonials</h2>
       <div className="row">
         {testimonials.map((testimonial) => (
@@ -62,6 +78,20 @@ const Testimonials = () => {
               <div className="card-body">
                 <h5 className="card-title">{testimonial.name}</h5>
                 <p className="card-text">{testimonial.description}</p>
+                <div className="d-flex justify-content-between">
+                  <button
+                    className="btn btn-warning"
+                    onClick={() => handleEdit(testimonial)}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => handleDelete(testimonial._id)}
+                  >
+                    Delete
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -94,13 +124,15 @@ const Testimonials = () => {
             className="form-control"
           />
         </div>
-        <button onClick={addTestimonial} className="btn btn-primary">
+        {update!==true && <button onClick={addTestimonial} className="btn btn-primary">
           Add Testimonial
-        </button>
+        </button>}
+        {update===true && <button onClick={updateTestimonial} className="btn btn-warning">
+          Update Testimonial
+        </button>}
       </div>
     </div>
   );
 };
 
 export default Testimonials;
-

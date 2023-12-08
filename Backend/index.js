@@ -4,7 +4,7 @@ import bodyparser from "body-parser";
 import mongoose from "mongoose";
 import router from "./routes/shoesMania.js";
 import { shoeModel } from "./models/shoes.js";
-
+import { testimonialModel } from "./models/testimonial.js";
 const app = express();
 
  app.use(cors());
