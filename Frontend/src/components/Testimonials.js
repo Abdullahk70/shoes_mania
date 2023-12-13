@@ -67,7 +67,7 @@ const Testimonials = () => {
   const handleDelete = (id) => {
     delTestimonials(id);
   };
-
+  
   return (
     <div className="container" style={{ marginTop: '8rem' }}>
       <h2 className="text-center mb-4">Testimonials</h2>
