@@ -15,18 +15,18 @@ const Adminpanel=()=>{
       
         <>
         
-        <div className="container-fluid"style={{marginTop:"150px"}}>
+        <div className="container-fluid bg-white"style={{marginTop:"150px"}}>
             
-          <div className="row" >
+          <div className="row "  >
             <div
               className="col-md-3"
-              style={{backgroundColor:"grey"}}
+              style={{backgroundColor:"#e4e7eb",height:"33em",marginTop:"-42px",border:"none"}}
               
             >
               <Sidebar/>
             </div>
             <div
-              className="col-md-9"
+              className="col-md-9" 
             >{type=="create"&& <Form/>}
              {type=="view"&& <ViewForm/>}
              {type=="update"&& <UpdateForm/>}
