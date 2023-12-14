@@ -13,7 +13,7 @@ const Adminpanel=()=>{
   const type=useContext(typeContext);
     return (
       
-        <>
+        <div >
         
         <div className="container-fluid bg-white"style={{marginTop:"150px"}}>
             
@@ -26,12 +26,15 @@ const Adminpanel=()=>{
               <Sidebar/>
             </div>
             <div
-              className="col-md-9" 
-            >{type=="create"&& <Form/>}
+              className="col-md-9 bg-white"  style={{marginTop:"-2.5rem"}} 
+            >
+              <div style={{marginTop:"1.5rem"}}>
+              {type=="create"&& <Form/>}
              {type=="view"&& <ViewForm/>}
              {type=="update"&& <UpdateForm/>}
              {type=="delete"&& <DeleteForm/>}
              
+              </div>
               {/* {props.type=="create" && <Form/>}
               {props.type=="view" && <ViewForm/>}
               {props.type=="update" && <UpdateForm/>}
@@ -39,7 +42,7 @@ const Adminpanel=()=>{
             </div>
           </div>
         </div>
-        </>
+        </div>
       );
 }
 export default Adminpanel;
