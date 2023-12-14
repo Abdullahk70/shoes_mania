@@ -13,20 +13,20 @@ const Adminpanel=()=>{
   const type=useContext(typeContext);
     return (
       
-        <div >
+        <div style={{backgroundColor:"transparent"}}>
         
         <div className="container-fluid bg-white"style={{marginTop:"150px"}}>
             
           <div className="row "  >
             <div
-              className="col-md-3"
+              className="col-md-3 "
               style={{backgroundColor:"#e4e7eb",height:"33em",marginTop:"-42px",border:"none"}}
               
             >
               <Sidebar/>
             </div>
             <div
-              className="col-md-9 bg-white"  style={{marginTop:"-2.5rem"}} 
+              className="col-md-9 bg-white"  style={{marginTop:"-2.5rem",marginLeft:"-0.5rem",borderTopLeftRadius: "3%",boxShadow: "5px 0 10px black" }} 
             >
               <div style={{marginTop:"1.5rem"}}>
               {type=="create"&& <Form/>}
@@ -35,10 +35,6 @@ const Adminpanel=()=>{
              {type=="delete"&& <DeleteForm/>}
              
               </div>
-              {/* {props.type=="create" && <Form/>}
-              {props.type=="view" && <ViewForm/>}
-              {props.type=="update" && <UpdateForm/>}
-              {props.type=="delete" && <DeleteForm/>} */}
             </div>
           </div>
         </div>
