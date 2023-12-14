@@ -7,9 +7,9 @@ const Sidebar = () => {
     <div className="mt-5 bg-secondary" style={{ width: "18rem", backgroundColor: "#e4e7eb" }}>
 
 
-<div className="d-flex align-items-center justify-content-between p-3" style={{backgroundColor:"#e4e7eb"}}>
+<div className="d-flex align-items-center justify-content-between p-3" style={{backgroundColor:"#e4e7eb",marginTop:"-40px"}}>
 
-        <div className="d-flex align-items-center ms-3" >
+        <div className="d-flex align-items-center ms-3 -,t" >
           <div className="rounded-circle bg-white p-1 mr-2">
             <FontAwesomeIcon icon={faUser} className="text-primary" style={{ fontSize: "1.5rem" }} />
           </div>
@@ -67,7 +67,18 @@ const Sidebar = () => {
             </div>
           </Link>
         </li>
+        <div class="martfury-logo" style={{backgroundColor:"#e4e7eb",marginLeft:"25px"}}>
+  <span style={{color:"#333333",fontWeight:"bold"}}>Shoes</span>
+  <span style={{color:"#F47542",fontWeight:"bold"}}>Mania</span>
+  <br />
+   <span style={{fontSize:"13px",marginLeft:"-20px"}}>©</span>
+   
+
+   <span className="text-muted" style={{fontSize:"13px"}}>2024 All rights reserved</span>
+</div>
       </ul>
+     
+
     </div>
   );
 };
