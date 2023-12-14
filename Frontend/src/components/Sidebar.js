@@ -15,7 +15,7 @@ const Sidebar = () => {
           </div>
           <div className="ms-2">
             <p className="mb-0 font-weight-bold ">Hello,</p>
-            <p className="mb-0 text-muted">Ahmed</p>
+            <p className="mb-0 text-muted">Abdullah</p>
           </div>
         </div>
         <div>
