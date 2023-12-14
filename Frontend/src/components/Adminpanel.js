@@ -20,6 +20,7 @@ const Adminpanel=()=>{
           <div className="row" >
             <div
               className="col-md-3"
+              style={{backgroundColor:"grey"}}
               
             >
               <Sidebar/>

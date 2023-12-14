@@ -39,7 +39,7 @@ const Form = () => {
   };
 
   return (
-    <form className="row g-3">
+    <form className="row g-3 ">
       <div className="col-md-6">
         <label htmlFor="inputName" className="form-label">
           Product Name
