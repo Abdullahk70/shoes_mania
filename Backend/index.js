@@ -8,7 +8,7 @@ import { testimonialModel } from "./models/testimonial.js";
 const app = express();
 
  app.use(cors({
-  origin:["https://https://shoes-mania-frontend.vercel.app"],
+  origin:["https://shoes-mania-frontend.vercel.app"],
   methods:["POST","GET","DELETE"],
   
               }));
