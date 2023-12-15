@@ -5,17 +5,23 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faUser } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = (props) => {
-  const [showUserMenu, setShowUserMenu] = useState(false); // State for user menu
+  const [showCategoriesMenu, setShowCategoriesMenu] = useState(false);
+  const [showUserMenu, setShowUserMenu] = useState(false);
 
   const userDropdown = (
-    <div className="user-dropdown">
-      <Link to="../login"><button className="dropdown-item" onClick={() => setShowUserMenu(false)}>
-        Login
-      </button></Link>
-      <Link to="../signup"><button className="dropdown-item " onClick={() => setShowUserMenu(false)}>
-        Sign Up
-      </button></Link>
-    </div>
+    <div className="">
+  <Link to="../login" style={{ textDecoration: 'none' }}>
+    <button className="dropdown-item" onClick={() => setShowUserMenu(false)}>
+      Login
+    </button>
+  </Link>
+  <Link to="../signup" style={{ textDecoration: 'none' }}>
+    <button className="dropdown-item" onClick={() => setShowUserMenu(false)}>
+      Sign Up
+    </button>
+  </Link>
+</div>
+
   );
 
   return (
@@ -67,15 +73,16 @@ const Navbar = (props) => {
 
             <li className="nav-item dropdown">
               <a
-                className="nav-link dropdown-toggle text-white mt-3"
+                className={`nav-link dropdown-toggle text-white mt-3 ${showCategoriesMenu ? 'show' : ''}`}
                 href="#"
                 role="button"
                 data-bs-toggle="dropdown"
-                aria-expanded="false"
+                aria-expanded={showCategoriesMenu}
+                onClick={() => setShowCategoriesMenu(!showCategoriesMenu)}
               >
                 Categories
               </a>
-              <ul className="dropdown-menu">
+              <ul className={`dropdown-menu ${showCategoriesMenu ? 'show' : ''}`}>
                 <li>
                   <Link to="/SportsScreen" className="dropdown-item">
                     Sports Shoes
@@ -151,12 +158,20 @@ const Navbar = (props) => {
             </form>
 
             {/* User icon with dropdown */}
-            <div
-              className="user-icon mx-3"
-              onClick={() => setShowUserMenu(!showUserMenu)}
-            >
-              <FontAwesomeIcon icon={faUser} size="lg" />
-              {showUserMenu && userDropdown}
+            <div className="nav-item dropdown">
+              <a
+                className={`nav-link dropdown-toggle text-white mt- me-4 ms-1 ${showUserMenu ? 'show' : ''}`}
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded={showUserMenu}
+                onClick={() => setShowUserMenu(!showUserMenu)}
+              >
+                Login
+              </a>
+              <div className={`dropdown-menu ${showUserMenu ? 'show' : ''}`}>
+                {userDropdown}
+              </div>
             </div>
           </div>
         </div>
@@ -166,3 +181,4 @@ const Navbar = (props) => {
 };
 
 export default Navbar;
+
