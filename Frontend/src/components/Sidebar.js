@@ -70,7 +70,7 @@ const Sidebar = () => {
         </li>
         <div class="martfury-logo" style={{backgroundColor:"#e4e7eb",marginLeft:"25px"}}>
   <span style={{color:"#333333",fontWeight:"bold"}}>Shoes</span>
-  <span style={{color:"#F47542",fontWeight:"bold"}}>Mania</span>
+  <span style={{color:"#4C2E9F",fontWeight:"bold"}}>Mania</span>
   <br />
    <span style={{fontSize:"13px",marginLeft:"-20px"}}>©</span>
    
