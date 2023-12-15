@@ -1,65 +1,50 @@
-import React, { useRef, useState,useEffect } from 'react'
-import { connectToAxios, getProducts } from '../services/api';
-import Card from "./Card"
-import viewCard from './viewCard';
+import React, {useState, useEffect } from 'react';
+import { getProducts } from '../services/api';
+
 
 export default function ViewForm() {
-  const inputref=useRef("");
+  const [products, setProducts] = useState([]);
 
-  const [view,setView]=useState({
-    id:"",
-  })
-  const[prods,setProds]=useState("k");
-
-
-   const onChange=(event)=>{
-    setView({id:event.target.value});
-   }
-
-  
-   const handleClick = async () => {
-    try {
-      let res = await getProducts();
-      const filteredProducts = res.data.filter((itm) => itm.id === view.id);
-  
-      if (filteredProducts.length > 0) {
-        setProds(filteredProducts[0]);
-      } else {
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        let res = await getProducts();
+        setProducts(res.data);
         
-        alert('Product not found');
+      } catch (error) {
+        console.error('Error fetching products:', error.message);
       }
-  
-      setView({ id: '' });
-    } catch (error) {
-      console.error('Error fetching products:', error.message);
-    }
-  };
-  
-  const formSubmit= (e)=>{
-   e.preventDefault();
-    
-  }
-  
-  
-  return (
-    <div className=''>
-    <form className="row g-3" onSubmit={formSubmit}>
-    
-    <div className="col-md-6">
-      <label for="Product-ID" className="form-label">Product ID</label>
-      <input  className="form-control" name="id" value={view.id} id="productid" onChange={onChange} placeholder="i.e This is product ID" />
-    </div>
-    
-    
-    <div className="col-12">
-      <button  onClick={handleClick} className="btn btn-primary "style={{backgroundColor:"#4C2E9F"}}>View</button>
-    </div>
-    {prods!=="k" && <div>
-  <Card title={prods.name} pic={prods.pic} description={prods.price}/>
-  </div>}
+    };
 
-    </form>
-   
+    fetchProducts();
+  }, []);
+
+  return (
+    <div className="">
+      <table className="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Pic</th>
+            <th scope="col">Price</th>
+            <th scope="col">Category</th>
+          </tr>
+        </thead>
+        <tbody>
+          {products.map((product) => (
+            <tr key={product.id}>
+              <td>{product.id}</td>
+              <td>{product.name}</td>
+              <td>
+                <img src={product.pic} alt={product.name} style={{ maxWidth: '50px', maxHeight: '50px' }} />
+              </td>
+              <td>PKR {product.price}</td>
+              <td>{product.category}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
-  )
+  );
 }
