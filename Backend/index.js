@@ -7,7 +7,7 @@ import { shoeModel } from "./models/shoes.js";
 import { testimonialModel } from "./models/testimonial.js";
 const app = express();
 
- app.use(cors());
+ app.use(cors({origin:["https://https://shoes-mania-frontend.vercel.app/"]}));
  app.use(bodyparser.json({extends:true}));
  app.use(bodyparser.urlencoded({extends:true}));
  app.use("/shoesMania",router);
