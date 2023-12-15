@@ -1,4 +1,3 @@
-import Navbar from "./Navbar"; 
 import Sidebar from "./Sidebar"
 import Form from "./Form";
 import ViewForm from "./ViewForm";
@@ -50,7 +49,7 @@ const Adminpanel=()=>{
       </div>
 
       {/* Exit Icon with "Exit Store" paragraph */}
-      <div style={{ display: 'flex', alignItems: 'center' }}>
+      <div style={{ display: 'flex', alignItems: 'center',cursor:"pointer" }}>
         <FontAwesomeIcon icon={faSignOutAlt} style={{ marginRight: '5px', color: 'red' }} />
         <p style={{ margin: 0 }}>Exit Store</p>
       </div>
