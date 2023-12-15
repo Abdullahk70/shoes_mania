@@ -1,5 +1,5 @@
 import axios from "axios"
-const url="http://localhost:5000";
+const url="http://shoes-mania-api.vercel.app";
 
 export const connectToAxios=async (data)=>{
     
