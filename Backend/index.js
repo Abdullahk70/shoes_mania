@@ -12,6 +12,7 @@ const app = express();
   methods:["POST","GET","DELETE"],
   
               }));
+// app.use(cors());
  app.use(bodyparser.json({extends:true}));
  app.use(bodyparser.urlencoded({extends:true}));
  app.use("/shoesMania",router);
