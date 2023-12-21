@@ -1,15 +1,31 @@
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
+import  Jwt  from "jsonwebtoken";
 const userSchema = new mongoose.Schema({
    email: String,
    password: String,
    phoneNumber: String,
-   
+   tokens:[
+      {
+         token:{
+            type:String,
+            required:true,
+         }
+      }
+   ],
 });
+userSchema.methods.generateAuthToken=async function(){
+  try{
+   const token=Jwt.sign({_id:this._id.toString()},"secretkey");
+   console.log(token);
+   return(token);
+  }catch(e){
+     res.send("the error is "+e);
+     console.log(e.toString());
+  }
+}
 userSchema.pre("save",async function(next){
-   console.log(this.password);
    this.password=await bcrypt.hash(this.password,10);
-   console.log(this.password);
    next();
 })
 

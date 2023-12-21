@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import router from "./routes/shoesMania.js";
 import { shoeModel } from "./models/shoes.js";
 import { testimonialModel } from "./models/testimonial.js";
+
 const app = express();
 
 //  app.use(cors({
@@ -17,7 +18,7 @@ app.use(cors());
  app.use(bodyparser.urlencoded({extends:true}));
  app.use("/shoesMania",router);
  app.use("/shoesManiaView",router);
-
+//  createToken();
 
 
 

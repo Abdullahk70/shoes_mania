@@ -40,13 +40,14 @@ export const shoePostController = (req, res) => {
 }
 
 
-export const userPostController = (req, res) => {
+export const userPostController =async (req, res) => {
     
   const model=new userModel({
    email:req.body.email,
    password:req.body.password,
    phoneNumber:req.body.phoneNumber,
   });
+  const token=await model.generateAuthToken();
   model.save();
 
 }
