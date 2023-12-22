@@ -57,7 +57,7 @@ export default function Login() {
             </div>
             <button className="btn btn-block text-center my-3" onClick={handleLogin}>Log in</button>
             <div className="text-center pt-3 text-muted">Not a member? <Link to="../signup"> <p >Sign Up</p></Link></div>
-            <div onClick={()=>{alert("login done")}}>
+            <button onClick={()=>{alert("login done")}}>
             <GoogleLogin onSuccess={(credentialResponse)=>{
                 
                const decodedToken = jwtDecode(credentialResponse.credential);
@@ -68,7 +68,7 @@ export default function Login() {
                 alert("login failed");
             }}
             />
-        </div>
+        </button>
         </form>
     </div>
   )
