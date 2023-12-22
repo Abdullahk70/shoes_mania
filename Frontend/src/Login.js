@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import login from "./Login.css"
 import { Link } from 'react-router-dom'
-import { getUsers } from './services/api';
-
+import { LoginUser } from './services/api';
+import { GoogleLogin } from '@react-oauth/google';
+import {jwtDecode} from "jwt-decode"
 
 export default function Login() {
     const [view,setView]=useState({
@@ -17,20 +18,7 @@ export default function Login() {
     }
     const handleLogin=async()=>{
         try {
-            let res = await getUsers();
-            
-            const filteredProducts = res.data.filter((itm) => itm.email == view.email);
-            if(filteredProducts.length==0){
-                alert("user not found");
-            }
-            else{
-            if ( filteredProducts[0].password ==view.password) {
-              alert("successful")
-            } 
-            else{
-                alert("Password Incorrect")
-            }
-            }
+            let res = await LoginUser(view);
             setView({ email: '',password: '' });
           } catch (error) {
             console.error('Error fetching products:', error.message);
@@ -69,6 +57,16 @@ export default function Login() {
             </div>
             <button className="btn btn-block text-center my-3" onClick={handleLogin}>Log in</button>
             <div className="text-center pt-3 text-muted">Not a member? <Link to="../signup"> <p >Sign Up</p></Link></div>
+            <GoogleLogin onSuccess={(credentialResponse)=>{
+                
+               const decodedToken = jwtDecode(credentialResponse.credential);
+               console.log('Decoded Token:', decodedToken);
+
+            }}
+            onError={()=>{
+                alert("login failed");
+            }}
+            />
         </form>
     </div>
   )

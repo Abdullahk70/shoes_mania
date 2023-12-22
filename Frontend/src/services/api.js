@@ -1,4 +1,5 @@
 import axios from "axios"
+import { json } from "react-router-dom";
 const url="http://localhost:5000";
 // https://shoes-mania-api.vercel.app
 export const connectToAxios=async (data)=>{
@@ -8,8 +9,9 @@ export const connectToAxios=async (data)=>{
 export const getProducts=async ()=>{
    return await axios.get(`${url}/shoesManiaView`);
 }
-export const getUsers=async ()=>{
-    return await axios.get(`${url}/shoesMania/Users`);
+export const LoginUser=async (view)=>{
+     return await axios.post(`${url}/shoesMania/UserLogin`,view);
+    // alert(JSON.stringify(view));
  }
 export const delProduct=async(id)=>{
     

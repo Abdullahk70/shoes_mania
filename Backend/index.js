@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 import router from "./routes/shoesMania.js";
 import { shoeModel } from "./models/shoes.js";
 import { testimonialModel } from "./models/testimonial.js";
-
+import passport from "passport";
 const app = express();
 
 //  app.use(cors({
@@ -20,7 +20,15 @@ app.use(cors());
  app.use("/shoesManiaView",router);
 //  createToken();
 
+app.use(passport.initialize());
+app.use(passport.session());
 
+passport.serializeUser(function (user, cb) {
+  cb(null, user);
+});
+passport.deserializeUser(function (obj, cb) {
+  cb(null, obj);
+});
 
 
 

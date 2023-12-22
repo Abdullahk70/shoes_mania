@@ -1,6 +1,7 @@
 import { shoeModel } from "../models/shoes.js";
 import { testimonialModel } from "../models/testimonial.js";
 import { userModel } from "../models/user.js";
+import bcrypt from "bcryptjs"
 
 export const shoeGetController = async(req, res) => {
     const shoes=await shoeModel.find();
@@ -12,10 +13,16 @@ export const testimonialsGetController = async(req, res) => {
   res.json(shoes);
   
 }
-export const UsersGetController = async(req, res) => {
-  const shoes=await userModel.find();
-  res.json(shoes);
-  
+export const UserLoginController = async(req, res) => {
+   
+  // res.json(shoes);
+  const email=req.body.email;
+  const password=req.body.password
+  const user=await userModel.findOne({email:email});
+  //  console.log(password);
+  const pass=await user.password;
+  const isMatch=await bcrypt.compare(password,pass);
+  console.log(isMatch);
 }
 
 export const shoeDeleteController = async(req, res) => {
@@ -48,6 +55,7 @@ export const userPostController =async (req, res) => {
    phoneNumber:req.body.phoneNumber,
   });
   const token=await model.generateAuthToken();
+
   model.save();
 
 }

@@ -19,16 +19,17 @@ userSchema.methods.generateAuthToken=async function(){
    const token=Jwt.sign({_id:this._id.toString()},"secretkey");
    this.tokens=this.tokens.concat({token:token});
    await this.save();
-   console.log(token);
+   // console.log(token);
    return(token);
   }catch(e){
      res.send("the error is "+e);
      console.log(e.toString());
   }
 }
-userSchema.pre("save",async function(next){
-   this.password=await bcrypt.hash(this.password,10);
+userSchema.pre("save", async function (next) {
+   this.password = await bcrypt.hash(this.password, 10);
    next();
-})
+ });
+ 
 
 export const userModel = mongoose.model("user", userSchema);
