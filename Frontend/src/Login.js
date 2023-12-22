@@ -61,7 +61,7 @@ export default function Login() {
                 
                const decodedToken = jwtDecode(credentialResponse.credential);
                console.log('Decoded Token:', decodedToken);
-
+               alert("Loged in");
             }}
             onError={()=>{
                 alert("login failed");
