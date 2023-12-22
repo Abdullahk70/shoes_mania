@@ -38,7 +38,7 @@ export default function Login() {
             <div className="form-group py-1 pb-2">
                 <div className="input-field">
                     <span className="fas fa-lock p-2"></span>
-                    <input type="text" name="password" value={view.password} onChange={onChange} placeholder="Enter your Password" required className=""/>
+                    <input type="password" name="password" value={view.password} onChange={onChange} placeholder="Enter your Password" required className=""/>
                     <button className="btn bg-white text-muted">
                         <span className="far fa-eye-slash"></span>
                     </button>
