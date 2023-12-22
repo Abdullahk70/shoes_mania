@@ -58,9 +58,11 @@ export default function Login() {
             <button className="btn btn-block text-center my-3" onClick={handleLogin}>Log in</button>
             <div className="text-center pt-3 text-muted">Not a member? <Link to="../signup"> <p >Sign Up</p></Link></div>
             <button onClick={()=>{alert("login done")}}>
-            <GoogleLogin onSuccess={(credentialResponse)=>{
+            <GoogleLogin onSuccess={async(credentialResponse)=>{
                 
-               const decodedToken = jwtDecode(credentialResponse.credential);
+               const decodedToken =await jwtDecode(credentialResponse.credential).then(()=>{
+                alert("login done");
+               });
                console.log('Decoded Token:', decodedToken);
                
             }}
