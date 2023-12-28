@@ -14,7 +14,7 @@ export default function DeleteForm() {
 
   const formSubmit = (e) => {
     e.preventDefault();
-    // You can perform additional actions here if needed
+   
   };
 
   const onClick = async () => {
