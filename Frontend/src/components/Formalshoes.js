@@ -1,40 +1,43 @@
 import Card from "./Card";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { getProducts } from "../services/api";
 
-const Formalshoes=()=>{
-   const [formalShoes, setFormalShoes] = useState([]);
+const Formalshoes = () => {
+  const [formalShoes, setFormalShoes] = useState([]);
 
-   useEffect(() => {
+  useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const products = await getProducts(); 
- 
-        const formalProducts = products.data.filter((product) => product.category === "Formal Shoes");
- 
+        const products = await getProducts();
+
+        const formalProducts = products.data.filter(
+          (product) => product.category === "Formal Shoes"
+        );
+
         setFormalShoes(formalProducts);
-        
       } catch (error) {
         console.error("Error fetching products:", error);
       }
     };
- 
+
     fetchProducts();
   }, []);
- 
-   return (
-     <div className="row container-fluid">
-       {formalShoes.map((item) => (
-           <div className="col-md-3" key={item.title}>
-             <Card title={item.name} pic={item.pic} description={item.price} />
-           </div>
-         ))}
-     </div>
-   );
 
+  return (
+    <div className="container-fluid">
+      <div className="row">
+        {formalShoes.map((item) => (
+          <div className="col-lg-3 col-md-4 col-sm-6" key={item.title}>
+            <Card title={item.name} pic={item.pic} description={item.price} />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
 
-}
 export default Formalshoes;
+
 
 
  // return <div className="row container-fluid">
