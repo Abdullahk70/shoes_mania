@@ -19,12 +19,17 @@ app.use(cors({
 //   methods:["POST","GET","DELETE"] , 
   
 //               }));
-// app.use(cors());
+//  app.use(cors());
  app.use(bodyparser.json({extends:true}));
  app.use(bodyparser.urlencoded({extends:true}));
  app.use("/shoesMania",router);
  app.use("/shoesManiaView",router);
- app.use('/api/v1/test',router);
+
+
+ app.post('',(req,res)=>{
+
+  res.json(req.body);
+ });
 //  createToken();
 
 app.use(passport.initialize());
