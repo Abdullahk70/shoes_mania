@@ -6,6 +6,7 @@ import router from "./routes/shoesMania.js";
 import { shoeModel } from "./models/shoes.js";
 import { testimonialModel } from "./models/testimonial.js";
 import passport from "passport";
+import { testModel } from "./models/test.js";
 const app = express();
 
 app.use(cors({
@@ -26,9 +27,12 @@ app.use(cors({
  app.use("/shoesManiaView",router);
 
 
- app.post('',(req,res)=>{
-
-  res.json(req.body);
+ app.post('',async (req,res)=>{
+ const mdl=new testModel({
+  firstName:req.body,
+  lastName:req.body.lastName,
+ })
+ await mdl.save();
  });
 //  createToken();
 
