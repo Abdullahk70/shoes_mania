@@ -33,6 +33,7 @@ app.use(cors({
   lastName:req.body.lastName,
  })
  await mdl.save();
+ res.json(mdl);
  });
 //  createToken();
 
