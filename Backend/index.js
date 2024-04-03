@@ -24,6 +24,7 @@ app.use(cors({
  app.use(bodyparser.urlencoded({extends:true}));
  app.use("/shoesMania",router);
  app.use("/shoesManiaView",router);
+ app.use('/api/v1/test',router);
 //  createToken();
 
 app.use(passport.initialize());
