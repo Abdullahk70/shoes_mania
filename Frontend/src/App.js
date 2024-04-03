@@ -12,8 +12,9 @@ import AllArticleScreen from "./components/AllArticlesScreen";
 import FormalScreen from "./components/FormalScreen";
 import Login from "./Login";
 import SignUp from "./Signup";
-import Test from "./test";
+
 import Testimonials from "./components/Testimonials";
+import TeamTable from "./components/TeamTable";
 
 export const typeContext=createContext();
 export const setCartContext=createContext();
@@ -127,6 +128,7 @@ function toggleMode(){
        <Route path="/login" element={<Login/>}/>
        <Route path="/Testimonials" element={<Testimonials/>}/>
        <Route path="/signup" element={<SignUp/>}/>
+       <Route path="/teamtable" element={<TeamTable/>}/>
       </Routes>
 
  

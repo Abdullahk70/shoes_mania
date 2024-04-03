@@ -1,5 +1,3 @@
-import logo from "./img/logo.jpg";
-
 const Carousel = () => {
   return (
     <div

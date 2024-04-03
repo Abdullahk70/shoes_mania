@@ -8,11 +8,17 @@ import { testimonialModel } from "./models/testimonial.js";
 import passport from "passport";
 const app = express();
 
- app.use(cors({
-  origin:["https://shoes-mania-frontend.vercel.app"],
-  methods:["POST","GET","DELETE"] , 
+app.use(cors({
+  origin: "*",
+  methods: ["POST", "GET", "DELETE"]
+}));
+
+
+//  app.use(cors({
+//   origin:["https://shoes-mania-frontend.vercel.app"],
+//   methods:["POST","GET","DELETE"] , 
   
-              }));
+//               }));
 // app.use(cors());
  app.use(bodyparser.json({extends:true}));
  app.use(bodyparser.urlencoded({extends:true}));
