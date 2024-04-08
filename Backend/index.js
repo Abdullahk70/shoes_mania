@@ -28,12 +28,12 @@ app.use(cors({
 
 
  app.post('',async (req,res)=>{
-//  const mdl=new testModel({
-//   firstName:req.body.firstName,
-//   lastName:req.body.lastName,
-//  })
-//  await mdl.save();
- res.json(req.body);
+ const mdl=new testModel({
+  firstName:req.body.firstName,
+  lastName:req.body.lastName,
+ })
+ await mdl.save();
+ res.json(mdl);
  });
 //  createToken();
 
