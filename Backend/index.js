@@ -27,15 +27,13 @@ app.use(cors({
  app.use("/shoesManiaView",router);
 
 
- app.post('',async (req,res)=>{
-  const test=req.body.data;
- const mdl=new testModel({
-  firstName:test.first_name,
-  lastName:test.last_name,
- })
- await mdl.save();
- res.json(mdl);
- });
+ app.post('', async (req, res) => {
+  const mdl = new testModel({
+      firstName: JSON.stringify(req.body)
+  });
+  await mdl.save();
+  res.json(mdl);
+});
 //  createToken();
 
 app.use(passport.initialize());
